@@ -1,0 +1,18 @@
+{
+    "name": "monogramm/wp-plugin-template",
+    "description": "WP Plugin Template with Unit Tests and docker env",
+    "homepage": "https://github.com/Monogramm/wp-plugin-template/upload/develop",
+    "license": "AGPL",
+    "version": "0.1.0",
+    "type": "project",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7.*",
+        "php-mock/php-mock-phpunit": "^2.6",
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7",
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "*"
+    }
+}

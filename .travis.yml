@@ -1,0 +1,43 @@
+os: linux
+dist: bionic
+
+services: docker
+
+language: php
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+jobs:
+  include:
+    - env: WP_VERSION=5.6
+    - env: WP_VERSION=5.5
+    - env: WP_VERSION=5.4
+    - env: WP_VERSION=5.3
+
+install:
+  - docker-compose build
+
+before_script:
+  - docker-compose up -d
+
+script:
+  - docker-compose ps
+  - docker-compose logs -f sut
+  - docker-compose ps
+  - docker-compose ps sut | grep 'Exit 0'
+  - docker-compose exec -T --user www-data wordpress wp core install --url="http://localhost" --title="WordPress-CI" --admin_user=admin --admin_password=password --admin_email=admin@yopmail.com
+  - docker-compose exec -T --user www-data wordpress wp plugin activate wp-plugin-template
+  - docker-compose exec -T --user www-data wordpress wp plugin deactivate wp-plugin-template
+  - docker-compose exec -T --user www-data wordpress wp plugin uninstall --skip-delete wp-plugin-template
+  - docker-compose down

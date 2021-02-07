@@ -1,0 +1,377 @@
+# Copyright (C) 2020 Monogramm
+# This file is distributed under the same license as the WP Plugin Template package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Plugin Template 0.1.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/wp-plugin-template\n"
+"POT-Creation-Date: 2020-08-25 11:09:26+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/class-wp-plugin-template-settings.php:283
+msgid "42"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:130
+#: includes/class-wp-plugin-template-settings.php:131
+#: includes/class-wp-plugin-template-settings.php:401
+msgid "WP Plugin Template Settings"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:179
+msgid "Settings"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:191
+msgid "Standard"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:192
+msgid "These are fairly standard form input fields."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:196
+msgid "Some Text"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:197
+msgid "This is a standard text field."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:200
+#: includes/class-wp-plugin-template-settings.php:208
+#: includes/class-wp-plugin-template-settings.php:216
+msgid "Placeholder text"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:204
+msgid "A Password"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:205
+msgid "This is a standard password field."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:212
+msgid "Some Secret Text"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:213
+msgid ""
+"This is a secret text field - any data saved here will not be displayed "
+"after the page has reloaded, but it will be saved."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:220
+msgid "A Text Block"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:221
+msgid "This is a standard text area."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:224
+msgid "Placeholder text for this textarea"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:228
+msgid "An Option"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:229
+msgid ""
+"A standard checkbox - if you save this option as checked then it will store "
+"the option as 'on', otherwise it will be an empty string."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:235
+msgid "A Select Box"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:236
+msgid "A standard select box."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:247
+msgid "Some Options"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:248
+msgid "A standard set of radio buttons."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:259
+msgid "Some Items"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:260
+msgid "You can select multiple items and they will be stored as an array."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:274
+msgid "Extra"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:275
+msgid "These are some extra input fields that maybe aren't as common as the others."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:279
+msgid "A Number"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:280
+msgid ""
+"This is a standard number field - if this field contains anything other "
+"than numbers then the form will not be submitted."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:287
+msgid "Pick a colour"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:288
+msgid ""
+"This uses WordPress' built-in colour picker - the option is stored as the "
+"colour's hex code."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:294
+msgid "An Image"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:295
+msgid ""
+"This will upload an image to your media library and store the attachment ID "
+"in the option field. Once you have uploaded an imge the thumbnail will "
+"display above these buttons."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:302
+msgid "A Multi-Select Box"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:303
+msgid "A standard multi-select box - the saved data is stored as an array."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:454
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:486
+msgid "Cloning of WP_Plugin_Template_API is forbidden."
+msgstr ""
+
+#: includes/class-wp-plugin-template-settings.php:495
+msgid "Unserializing instances of WP_Plugin_Template_API is forbidden."
+msgstr ""
+
+#: includes/class-wp-plugin-template.php:290
+msgid "Cloning of WP_Plugin_Template is forbidden"
+msgstr ""
+
+#: includes/class-wp-plugin-template.php:299
+msgid "Unserializing instances of WP_Plugin_Template is forbidden"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-admin-api.php:168
+msgid "Upload an image"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-admin-api.php:168
+msgid "Use image"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-admin-api.php:168
+msgid "Upload new image"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-admin-api.php:169
+msgid "Remove image"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:103
+#: includes/lib/class-wp-plugin-template-taxonomy.php:105
+msgid "Add New %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:104
+#: includes/lib/class-wp-plugin-template-taxonomy.php:102
+msgid "Edit %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:105
+msgid "New %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:106
+#: includes/lib/class-wp-plugin-template-taxonomy.php:101
+msgid "All %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:107
+#: includes/lib/class-wp-plugin-template-taxonomy.php:103
+msgid "View %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:108
+#: includes/lib/class-wp-plugin-template-taxonomy.php:109
+msgid "Search %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:109
+msgid "No %s Found"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:110
+msgid "No %s Found In Trash"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:111
+#: includes/lib/class-wp-plugin-template-taxonomy.php:107
+msgid "Parent %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:155
+msgid "%1$s updated. %2$sView %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:156
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:157
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:158
+msgid "%1$s updated."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:159
+msgid "%1$s restored to revision from %2$s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:160
+msgid "%1$s published. %2$sView %3$s%4s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:161
+msgid "%1$s saved."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:162
+msgid "%1$s submitted. %2$sPreview post%3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:163
+msgid "%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:163
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:164
+msgid "%1$s draft updated. %2$sPreview %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:181
+msgid "%1$s %2$s updated."
+msgid_plural "%1$s %3$s updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:182
+msgid "%1$s %2$s not updated, somebody is editing it."
+msgid_plural "%1$s %3$s not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:183
+msgid "%1$s %2$s permanently deleted."
+msgid_plural "%1$s %3$s permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:184
+msgid "%1$s %2$s moved to the Trash."
+msgid_plural "%1$s %3$s moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-wp-plugin-template-post-type.php:185
+msgid "%1$s %2$s restored from the Trash."
+msgid_plural "%1$s %3$s restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:104
+msgid "Update %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:106
+msgid "New %s Name"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:108
+msgid "Parent %s:"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:110
+msgid "Popular %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:111
+msgid "Separate %s with commas"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:112
+msgid "Add or remove %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:113
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: includes/lib/class-wp-plugin-template-taxonomy.php:114
+msgid "No %s found"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WP Plugin Template"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/Monogramm/wp-plugin-template/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "WP Plugin Template with Unit Tests and docker env"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Monogramm"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.monogramm.io/"
+msgstr ""

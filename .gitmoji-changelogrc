@@ -1,0 +1,7 @@
+{
+  "project": {
+    "name": "wp-plugin-template",
+    "description": "WP Plugin Template with Unit Tests and docker env",
+    "version": "0.1.0"
+  }
+}

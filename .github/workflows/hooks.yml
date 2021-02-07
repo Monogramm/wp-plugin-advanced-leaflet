@@ -1,0 +1,28 @@
+
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['5.6', '5.5', '5.4', '5.3']
+
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Execute CI tests
+        id: docker_build
+        run: |
+          export WP_VERSION=${{ matrix.version }}
+          ./manage.sh test
+
+      - name: Display docker images
+        run: docker images

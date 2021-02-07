@@ -1,0 +1,126 @@
+version: "2.3"
+
+volumes:
+  wordpress_data:
+  wordpress_db:
+
+services:
+  sut:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      wordpress:
+        condition: service_started
+      wordpressdb:
+        condition: service_healthy
+    volumes:
+      # To persist WP
+      - wordpress_data:/var/www/html
+      # To mount local plugin into WP
+      - .:/var/www/html/wp-content/plugins/${WP_PLUGIN}
+      # To persist WP tests lib
+      #- /srv/wordpress/tests-lib:/tmp/wordpress-tests-lib
+    environment:
+      - WAIT_FOR_DB=true
+      - DB_HOST=${WORDPRESS_ADMIN_LOGIN}
+      - PROJECT_DIR=/var/www/html/wp-content/plugins/${WP_PLUGIN}
+      # WordPress tests config
+      - DB_NAME=${WORDPRESS_DB_NAME}
+      - DB_USER=${WORDPRESS_DB_USER}
+      - DB_PASS=${WORDPRESS_DB_PWD}
+      - DB_HOST=wordpressdb:3306
+      - WP_VERSION=${WP_VERSION}
+      - TMPDIR=/tmp
+      - WP_TESTS_DIR=/tmp/wordpress-tests-lib
+      - WP_CORE_DIR=/var/www/html
+      - WP_PLUGIN=${WP_PLUGIN}
+
+  wordpress:
+    # https://hub.docker.com/repository/docker/monogramm/docker-wordpress
+    image: monogramm/docker-wordpress:${WP_VERSION}-apache
+    container_name: wordpress
+    #restart: always
+    hostname: localhost
+    depends_on:
+      wordpressdb:
+        condition: service_healthy
+    links:
+      - wordpressdb
+    expose:
+     - 80
+    ports:
+     - "8080:80"
+    volumes:
+      # To persist WP
+      - wordpress_data:/var/www/html
+      # To mount local plugin into WP
+      - .:/var/www/html/wp-content/plugins/${WP_PLUGIN}
+    environment:
+      # Site Config
+      - WORDPRESS_USERNAME=${WORDPRESS_ADMIN_LOGIN}
+      - WORDPRESS_PASSWORD=${WORDPRESS_ADMIN_PWD}
+      - WORDPRESS_EMAIL=admin@${DOMAIN}
+      - WORDPRESS_FIRST_NAME=Admin
+      - WORDPRESS_LAST_NAME=WordPress
+      - WORDPRESS_BLOG_NAME=${WORDPRESS_BLOG_NAME}
+      # DB Config
+      - WORDPRESS_DB_HOST=wordpressdb:3306
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PWD}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TBL_PREFIX}
+      # SMTP Config
+      - SMTP_HOST=wordpressmailer
+      - SMTP_PORT=1025
+      - SMTP_DOMAIN=localhost
+      - SMTP_USER=${WORDPRESS_SMTP_USER}
+      - SMTP_PASSWORD=${WORDPRESS_SMTP_PWD}
+      - SMTP_PROTOCOL=
+
+  wordpressdb:
+    image: mariadb:latest
+    container_name: wordpressdb
+    #restart: always
+    command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --character-set-client-handshake=FALSE
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "--password=${WORDPRESS_DB_ROOT_PWD}",
+        ]
+      timeout: 10s
+      retries: 5
+    expose:
+      - "3306"
+    #ports:
+    #  - "3306:3306"
+    volumes:
+      - wordpress_db:/var/lib/mysql
+      # If you want, you can sync time & timezone with host
+      #- /etc/localtime:/etc/localtime:ro
+      #- /etc/timezone:/etc/timezone:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=${WORDPRESS_DB_ROOT_PWD}
+      - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
+      - MYSQL_USER=${WORDPRESS_DB_USER}
+      - MYSQL_PASSWORD=${WORDPRESS_DB_PWD}
+
+  wordpressmailer:
+    image: sj26/mailcatcher:latest
+    hostname: wordpressmailer
+    container_name: wordpressmailer
+    restart: always
+    expose:
+      - 1025
+    ports:
+      - "1080:1080"
+    # If you want, you can sync time & timezone with host
+    #volumes:
+    #  - /etc/localtime:/etc/localtime:ro
+    #  - /etc/timezone:/etc/timezone:ro
+
