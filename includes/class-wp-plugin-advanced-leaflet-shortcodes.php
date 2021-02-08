@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ShortCodes class.
  */
-class WP_Plugin_Template_ShortCodes {
+class WP_Plugin_Advanced_Leaflet_ShortCodes {
 
 	/**
-	 * The single instance of WP_Plugin_Template_ShortCodes.
+	 * The single instance of WP_Plugin_Advanced_Leaflet_ShortCodes.
 	 *
 	 * @var     object
 	 * @access  private
@@ -144,15 +144,15 @@ class WP_Plugin_Template_ShortCodes {
 	}
 
 	/**
-	 * Main WP_Plugin_Template_ShortCodes Instance.
+	 * Main WP_Plugin_Advanced_Leaflet_ShortCodes Instance.
 	 *
-	 * Ensures only one instance of WP_Plugin_Template_ShortCodes is loaded or can be loaded.
+	 * Ensures only one instance of WP_Plugin_Advanced_Leaflet_ShortCodes is loaded or can be loaded.
 	 *
 	 * @since 0.1.0
 	 * @static
 	 * @see WP_Plugin_Template()
 	 * @param object $parent Object instance.
-	 * @return object WP_Plugin_Template_ShortCodes instance
+	 * @return object WP_Plugin_Advanced_Leaflet_ShortCodes instance
 	 */
 	public static function instance( $parent ) {
 		if ( null === self::$_instance ) {
@@ -167,7 +167,7 @@ class WP_Plugin_Template_ShortCodes {
 	 * @since 0.1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Template_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
 	} // End __clone()
 
 	/**
@@ -176,7 +176,7 @@ class WP_Plugin_Template_ShortCodes {
 	 * @since 0.1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Template_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
 	} // End __wakeup()
 
 }
