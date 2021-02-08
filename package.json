@@ -1,10 +1,10 @@
 {
-  "name": "wp-plugin-template",
-  "description": "WP Plugin Template with Unit Tests and docker env",
+  "name": "wp-plugin-advanced-leaflet",
+  "description": "WordPress Plugin for advanced geolocation data using Leaflet",
   "author": "Monogramm",
   "license": "AGPL",
   "version": "0.1.0",
-  "homepage": "https://github.com/Monogramm/wp-plugin-template",
+  "homepage": "https://github.com/Monogramm/wp-plugin-advanced-leaflet",
   "main": "Gruntfile.js",
   "devDependencies": {
     "@wordpress/eslint-plugin": "^7.1.0",

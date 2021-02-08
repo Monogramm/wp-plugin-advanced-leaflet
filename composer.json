@@ -1,7 +1,7 @@
 {
-    "name": "monogramm/wp-plugin-template",
-    "description": "WP Plugin Template with Unit Tests and docker env",
-    "homepage": "https://github.com/Monogramm/wp-plugin-template/upload/develop",
+    "name": "monogramm/wp-plugin-advanced-leaflet",
+    "description": "WordPress Plugin for advanced geolocation data using Leaflet",
+    "homepage": "https://github.com/Monogramm/wp-plugin-advanced-leaflet/upload/develop",
     "license": "AGPL",
     "version": "0.1.0",
     "type": "project",

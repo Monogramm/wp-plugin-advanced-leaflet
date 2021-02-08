@@ -84,7 +84,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: "wp-plugin-template",
+				textdomain: "wp-plugin-advanced-leaflet",
 			},
 			update_all_domains: {
 				options: {
@@ -99,8 +99,8 @@ module.exports = function( grunt ) {
 				options: {
 					domainPath: "/lang",
 					exclude: [ "\.git/*", "bin/*", "node_modules/*", "tests/*" ],
-					mainFile: "wp-plugin-template.php",
-					potFilename: "wp-plugin-template.pot",
+					mainFile: "wp-plugin-advanced-leaflet.php",
+					potFilename: "wp-plugin-advanced-leaflet.pot",
 					potHeaders: {
 						poedit: true,
 						"x-poedit-keywordslist": true

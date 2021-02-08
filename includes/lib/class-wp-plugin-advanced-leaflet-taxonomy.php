@@ -2,7 +2,7 @@
 /**
  * Taxonomy functions file.
  *
- * @package WP Plugin Template/Includes
+ * @package WP Plugin Advanced Leaflet/Includes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Taxonomy functions class.
  */
-class WP_Plugin_Template_Taxonomy {
+class WP_Plugin_Advanced_Leaflet_Taxonomy {
 
 	/**
 	 * The name for the taxonomy.
@@ -98,20 +98,20 @@ class WP_Plugin_Template_Taxonomy {
 			'name'                       => $this->plural,
 			'singular_name'              => $this->single,
 			'menu_name'                  => $this->plural,
-			'all_items'                  => sprintf( __( 'All %s', 'wp-plugin-template' ), $this->plural ),
-			'edit_item'                  => sprintf( __( 'Edit %s', 'wp-plugin-template' ), $this->single ),
-			'view_item'                  => sprintf( __( 'View %s', 'wp-plugin-template' ), $this->single ),
-			'update_item'                => sprintf( __( 'Update %s', 'wp-plugin-template' ), $this->single ),
-			'add_new_item'               => sprintf( __( 'Add New %s', 'wp-plugin-template' ), $this->single ),
-			'new_item_name'              => sprintf( __( 'New %s Name', 'wp-plugin-template' ), $this->single ),
-			'parent_item'                => sprintf( __( 'Parent %s', 'wp-plugin-template' ), $this->single ),
-			'parent_item_colon'          => sprintf( __( 'Parent %s:', 'wp-plugin-template' ), $this->single ),
-			'search_items'               => sprintf( __( 'Search %s', 'wp-plugin-template' ), $this->plural ),
-			'popular_items'              => sprintf( __( 'Popular %s', 'wp-plugin-template' ), $this->plural ),
-			'separate_items_with_commas' => sprintf( __( 'Separate %s with commas', 'wp-plugin-template' ), $this->plural ),
-			'add_or_remove_items'        => sprintf( __( 'Add or remove %s', 'wp-plugin-template' ), $this->plural ),
-			'choose_from_most_used'      => sprintf( __( 'Choose from the most used %s', 'wp-plugin-template' ), $this->plural ),
-			'not_found'                  => sprintf( __( 'No %s found', 'wp-plugin-template' ), $this->plural ),
+			'all_items'                  => sprintf( __( 'All %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'edit_item'                  => sprintf( __( 'Edit %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'view_item'                  => sprintf( __( 'View %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'update_item'                => sprintf( __( 'Update %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'add_new_item'               => sprintf( __( 'Add New %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'new_item_name'              => sprintf( __( 'New %s Name', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'parent_item'                => sprintf( __( 'Parent %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'parent_item_colon'          => sprintf( __( 'Parent %s:', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'search_items'               => sprintf( __( 'Search %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'popular_items'              => sprintf( __( 'Popular %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'separate_items_with_commas' => sprintf( __( 'Separate %s with commas', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'add_or_remove_items'        => sprintf( __( 'Add or remove %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'choose_from_most_used'      => sprintf( __( 'Choose from the most used %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'not_found'                  => sprintf( __( 'No %s found', 'wp-plugin-advanced-leaflet' ), $this->plural ),
 		);
 		//phpcs:enable
 		$args = array(

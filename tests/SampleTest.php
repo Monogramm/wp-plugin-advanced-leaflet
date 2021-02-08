@@ -2,7 +2,7 @@
 /**
  * Sample plugin test file.
  *
- * @package WP Plugin Template/Tests
+ * @package WP Plugin Advanced Leaflet/Tests
  */
 
 class SampleTest extends \PHPUnit_Framework_TestCase {

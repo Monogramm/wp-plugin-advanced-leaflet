@@ -2,7 +2,7 @@
 /**
  * Main plugin class file.
  *
- * @package WP Plugin Template/Includes
+ * @package WP Plugin Advanced Leaflet/Includes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin class.
  */
-class WP_Plugin_Template {
+class WP_Plugin_Advanced_Leaflet {
 
 	/**
-	 * The single instance of WP_Plugin_Template.
+	 * The single instance of WP_Plugin_Advanced_Leaflet.
 	 *
 	 * @var     object
 	 * @access  private
@@ -24,9 +24,9 @@ class WP_Plugin_Template {
 	private static $_instance = null; //phpcs:ignore
 
 	/**
-	 * Local instance of WP_Plugin_Template_Admin_API
+	 * Local instance of WP_Plugin_Advanced_Leaflet_Admin_API
 	 *
-	 * @var WP_Plugin_Template_Admin_API|null
+	 * @var WP_Plugin_Advanced_Leaflet_Admin_API|null
 	 */
 	public $admin = null;
 
@@ -119,7 +119,7 @@ class WP_Plugin_Template {
 	 */
 	public function __construct( $file = '', $version = '0.1.0' ) {
 		$this->_version = $version;
-		$this->_token   = 'WP_Plugin_Template';
+		$this->_token   = 'WP_Plugin_Advanced_Leaflet';
 
 		// Load plugin environment variables.
 		$this->file       = $file;
@@ -141,7 +141,7 @@ class WP_Plugin_Template {
 
 		// Load API for generic admin functions.
 		if ( is_admin() ) {
-			$this->admin = new WP_Plugin_Template_Admin_API();
+			$this->admin = new WP_Plugin_Advanced_Leaflet_Admin_API();
 		}
 
 		// Handle localisation.
@@ -158,14 +158,14 @@ class WP_Plugin_Template {
 	 * @param string $description Description.
 	 * @param array  $options Options array.
 	 *
-	 * @return bool|string|WP_Plugin_Template_Post_Type
+	 * @return bool|string|WP_Plugin_Advanced_Leaflet_Post_Type
 	 */
 	public function register_post_type( $post_type = '', $plural = '', $single = '', $description = '', $options = array() ) {
 		if ( ! $post_type || ! $plural || ! $single ) {
 			return false;
 		}
 
-		$post_type = new WP_Plugin_Template_Post_Type( $post_type, $plural, $single, $description, $options );
+		$post_type = new WP_Plugin_Advanced_Leaflet_Post_Type( $post_type, $plural, $single, $description, $options );
 
 		return $post_type;
 	}
@@ -179,14 +179,14 @@ class WP_Plugin_Template {
 	 * @param array  $post_types Post types to register this taxonomy for.
 	 * @param array  $taxonomy_args Taxonomy arguments.
 	 *
-	 * @return bool|string|WP_Plugin_Template_Taxonomy
+	 * @return bool|string|WP_Plugin_Advanced_Leaflet_Taxonomy
 	 */
 	public function register_taxonomy( $taxonomy = '', $plural = '', $single = '', $post_types = array(), $taxonomy_args = array() ) {
 		if ( ! $taxonomy || ! $plural || ! $single ) {
 			return false;
 		}
 
-		$taxonomy = new WP_Plugin_Template_Taxonomy( $taxonomy, $plural, $single, $post_types, $taxonomy_args );
+		$taxonomy = new WP_Plugin_Advanced_Leaflet_Taxonomy( $taxonomy, $plural, $single, $post_types, $taxonomy_args );
 
 		return $taxonomy;
 	}
@@ -250,7 +250,7 @@ class WP_Plugin_Template {
 	 * @since   0.1.0
 	 */
 	public function load_localisation() {
-		load_plugin_textdomain( 'wp-plugin-template', false, $this->dir . '/lang/' );
+		load_plugin_textdomain( 'wp-plugin-advanced-leaflet', false, $this->dir . '/lang/' );
 	} // End load_localisation ()
 
 	/**
@@ -261,7 +261,7 @@ class WP_Plugin_Template {
 	 * @since   0.1.0
 	 */
 	public function load_plugin_textdomain() {
-		$domain = 'wp-plugin-template';
+		$domain = 'wp-plugin-advanced-leaflet';
 
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain ); //phpcs:ignore
 
@@ -270,15 +270,15 @@ class WP_Plugin_Template {
 	} // End load_plugin_textdomain ()
 
 	/**
-	 * Main WP_Plugin_Template Instance
+	 * Main WP_Plugin_Advanced_Leaflet Instance
 	 *
-	 * Ensures only one instance of WP_Plugin_Template is loaded or can be loaded.
+	 * Ensures only one instance of WP_Plugin_Advanced_Leaflet is loaded or can be loaded.
 	 *
 	 * @param string $file File instance.
 	 * @param string $version Version parameter.
 	 *
-	 * @return Object WP_Plugin_Template instance
-	 * @see WP_Plugin_Template()
+	 * @return Object WP_Plugin_Advanced_Leaflet instance
+	 * @see WP_Plugin_Advanced_Leaflet()
 	 * @since 0.1.0
 	 * @static
 	 */
@@ -296,7 +296,7 @@ class WP_Plugin_Template {
 	 * @since 0.1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Template is forbidden', 'wp-plugin-template' ) ), esc_attr( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Advanced_Leaflet is forbidden', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->_version ) );
 	} // End __clone ()
 
 	/**
@@ -305,7 +305,7 @@ class WP_Plugin_Template {
 	 * @since 0.1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Template is forbidden', 'wp-plugin-template' ) ), esc_attr( $this->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Advanced_Leaflet is forbidden', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->_version ) );
 	} // End __wakeup ()
 
 	/**

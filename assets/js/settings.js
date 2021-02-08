@@ -1,5 +1,5 @@
 /**
- * WP Plugin Template settings js.
+ * WP Plugin Advanced Leaflet settings js.
  *
  * @package
  */

@@ -1,10 +1,10 @@
-=== WP Plugin Template ===
+=== WP Plugin Advanced Leaflet ===
 
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: <http://www.monogramm.io/>
 Tags: wordpress, plugin, template
 Requires at least: 5.2
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 7.2
 Stable tag: 0.1.0
 License: AGPL v3

@@ -1,5 +1,5 @@
 /**
- * WP Plugin Template admin js.
+ * WP Plugin Advanced Leaflet admin js.
  *
  * @package
  */
