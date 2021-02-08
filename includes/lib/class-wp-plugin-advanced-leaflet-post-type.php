@@ -2,7 +2,7 @@
 /**
  * Post type declaration file.
  *
- * @package WP Plugin Template/Includes
+ * @package WP Plugin Advanced Leaflet/Includes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Post type declaration class.
  */
-class WP_Plugin_Template_Post_Type {
+class WP_Plugin_Advanced_Leaflet_Post_Type {
 
 	/**
 	 * The name for the custom post type.
@@ -99,16 +99,16 @@ class WP_Plugin_Template_Post_Type {
 			'name'               => $this->plural,
 			'singular_name'      => $this->single,
 			'name_admin_bar'     => $this->single,
-			'add_new'            => _x( 'Add New', $this->post_type, 'wp-plugin-template' ),
-			'add_new_item'       => sprintf( __( 'Add New %s', 'wp-plugin-template' ), $this->single ),
-			'edit_item'          => sprintf( __( 'Edit %s', 'wp-plugin-template' ), $this->single ),
-			'new_item'           => sprintf( __( 'New %s', 'wp-plugin-template' ), $this->single ),
-			'all_items'          => sprintf( __( 'All %s', 'wp-plugin-template' ), $this->plural ),
-			'view_item'          => sprintf( __( 'View %s', 'wp-plugin-template' ), $this->single ),
-			'search_items'       => sprintf( __( 'Search %s', 'wp-plugin-template' ), $this->plural ),
-			'not_found'          => sprintf( __( 'No %s Found', 'wp-plugin-template' ), $this->plural ),
-			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'wp-plugin-template' ), $this->plural ),
-			'parent_item_colon'  => sprintf( __( 'Parent %s', 'wp-plugin-template' ), $this->single ),
+			'add_new'            => _x( 'Add New', $this->post_type, 'wp-plugin-advanced-leaflet' ),
+			'add_new_item'       => sprintf( __( 'Add New %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'edit_item'          => sprintf( __( 'Edit %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'new_item'           => sprintf( __( 'New %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'all_items'          => sprintf( __( 'All %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'view_item'          => sprintf( __( 'View %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			'search_items'       => sprintf( __( 'Search %s', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'not_found'          => sprintf( __( 'No %s Found', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'wp-plugin-advanced-leaflet' ), $this->plural ),
+			'parent_item_colon'  => sprintf( __( 'Parent %s', 'wp-plugin-advanced-leaflet' ), $this->single ),
 			'menu_name'          => $this->plural,
 		);
 		//phpcs:enable
@@ -152,16 +152,16 @@ class WP_Plugin_Template_Post_Type {
 		//phpcs:disable
 		$messages[ $this->post_type ] = array(
 			0  => '',
-			1  => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.', 'wp-plugin-template' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-			2  => __( 'Custom field updated.', 'wp-plugin-template' ),
-			3  => __( 'Custom field deleted.', 'wp-plugin-template' ),
-			4  => sprintf( __( '%1$s updated.', 'wp-plugin-template' ), $this->single ),
-			5  => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.', 'wp-plugin-template' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => sprintf( __( '%1$s published. %2$sView %3$s%4s.', 'wp-plugin-template' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-			7  => sprintf( __( '%1$s saved.', 'wp-plugin-template' ), $this->single ),
-			8  => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.', 'wp-plugin-template' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
-			9  => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.', 'wp-plugin-template' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i', 'wp-plugin-template' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-			10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.', 'wp-plugin-template' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+			1  => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.', 'wp-plugin-advanced-leaflet' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+			2  => __( 'Custom field updated.', 'wp-plugin-advanced-leaflet' ),
+			3  => __( 'Custom field deleted.', 'wp-plugin-advanced-leaflet' ),
+			4  => sprintf( __( '%1$s updated.', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			5  => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.', 'wp-plugin-advanced-leaflet' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => sprintf( __( '%1$s published. %2$sView %3$s%4s.', 'wp-plugin-advanced-leaflet' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+			7  => sprintf( __( '%1$s saved.', 'wp-plugin-advanced-leaflet' ), $this->single ),
+			8  => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.', 'wp-plugin-advanced-leaflet' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+			9  => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.', 'wp-plugin-advanced-leaflet' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i', 'wp-plugin-advanced-leaflet' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+			10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.', 'wp-plugin-advanced-leaflet' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
 		);
 		//phpcs:enable
 
@@ -178,11 +178,11 @@ class WP_Plugin_Template_Post_Type {
 	public function bulk_updated_messages( $bulk_messages = array(), $bulk_counts = array() ) {
 		//phpcs:disable
 		$bulk_messages[ $this->post_type ] = array(
-			'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'wp-plugin-template' ), $bulk_counts['updated'], $this->single, $this->plural ),
-			'locked'    => sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'wp-plugin-template' ), $bulk_counts['locked'], $this->single, $this->plural ),
-			'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'wp-plugin-template' ), $bulk_counts['deleted'], $this->single, $this->plural ),
-			'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'wp-plugin-template' ), $bulk_counts['trashed'], $this->single, $this->plural ),
-			'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'wp-plugin-template' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
+			'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'wp-plugin-advanced-leaflet' ), $bulk_counts['updated'], $this->single, $this->plural ),
+			'locked'    => sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'wp-plugin-advanced-leaflet' ), $bulk_counts['locked'], $this->single, $this->plural ),
+			'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'wp-plugin-advanced-leaflet' ), $bulk_counts['deleted'], $this->single, $this->plural ),
+			'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'wp-plugin-advanced-leaflet' ), $bulk_counts['trashed'], $this->single, $this->plural ),
+			'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'wp-plugin-advanced-leaflet' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
 		);
 		//phpcs:enable
 

@@ -12,7 +12,7 @@ Some key notes before you open a MR:
 
 Also, if you're new here
 
-- Contribution Guide => https://gitlab.com/wp-plugin-template/blob/master/CONTRIBUTING.md
+- Contribution Guide => https://gitlab.com/wp-plugin-advanced-leaflet/blob/master/CONTRIBUTING.md
 
 -->
 

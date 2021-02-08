@@ -2,7 +2,7 @@
 /**
  * Settings class file.
  *
- * @package WP Plugin Template/Settings
+ * @package WP Plugin Advanced Leaflet/Settings
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Settings class.
  */
-class WP_Plugin_Template_Settings {
+class WP_Plugin_Advanced_Leaflet_Settings {
 
 	/**
-	 * The single instance of WP_Plugin_Template_Settings.
+	 * The single instance of WP_Plugin_Advanced_Leaflet_Settings.
 	 *
 	 * @var     object
 	 * @access  private
@@ -127,8 +127,8 @@ class WP_Plugin_Template_Settings {
 			array(
 				'location'    => 'options', // Possible settings: options, menu, submenu.
 				'parent_slug' => 'options-general.php',
-				'page_title'  => __( 'WP Plugin Template Settings', 'wp-plugin-template' ),
-				'menu_title'  => __( 'WP Plugin Template Settings', 'wp-plugin-template' ),
+				'page_title'  => __( 'WP Plugin Advanced Leaflet Settings', 'wp-plugin-advanced-leaflet' ),
+				'menu_title'  => __( 'WP Plugin Advanced Leaflet Settings', 'wp-plugin-advanced-leaflet' ),
 				'capability'  => 'manage_options',
 				'menu_slug'   => $this->parent->_token . '_settings',
 				'function'    => array( $this, 'settings_page' ),
@@ -176,7 +176,7 @@ class WP_Plugin_Template_Settings {
 	 * @return array        Modified links.
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="options-general.php?page=' . $this->parent->_token . '_settings">' . __( 'Settings', 'wp-plugin-template' ) . '</a>';
+		$settings_link = '<a href="options-general.php?page=' . $this->parent->_token . '_settings">' . __( 'Settings', 'wp-plugin-advanced-leaflet' ) . '</a>';
 		array_push( $links, $settings_link );
 		return $links;
 	}
@@ -188,52 +188,52 @@ class WP_Plugin_Template_Settings {
 	 */
 	private function settings_fields() {
 		$settings['standard'] = array(
-			'title'       => __( 'Standard', 'wp-plugin-template' ),
-			'description' => __( 'These are fairly standard form input fields.', 'wp-plugin-template' ),
+			'title'       => __( 'Standard', 'wp-plugin-advanced-leaflet' ),
+			'description' => __( 'These are fairly standard form input fields.', 'wp-plugin-advanced-leaflet' ),
 			'fields'      => array(
 				array(
 					'id'          => 'text_field',
-					'label'       => __( 'Some Text', 'wp-plugin-template' ),
-					'description' => __( 'This is a standard text field.', 'wp-plugin-template' ),
+					'label'       => __( 'Some Text', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This is a standard text field.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'text',
 					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-template' ),
+					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
 				),
 				array(
 					'id'          => 'password_field',
-					'label'       => __( 'A Password', 'wp-plugin-template' ),
-					'description' => __( 'This is a standard password field.', 'wp-plugin-template' ),
+					'label'       => __( 'A Password', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This is a standard password field.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'password',
 					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-template' ),
+					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
 				),
 				array(
 					'id'          => 'secret_text_field',
-					'label'       => __( 'Some Secret Text', 'wp-plugin-template' ),
-					'description' => __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'wp-plugin-template' ),
+					'label'       => __( 'Some Secret Text', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'text_secret',
 					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-template' ),
+					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
 				),
 				array(
 					'id'          => 'text_block',
-					'label'       => __( 'A Text Block', 'wp-plugin-template' ),
-					'description' => __( 'This is a standard text area.', 'wp-plugin-template' ),
+					'label'       => __( 'A Text Block', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This is a standard text area.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'textarea',
 					'default'     => '',
-					'placeholder' => __( 'Placeholder text for this textarea', 'wp-plugin-template' ),
+					'placeholder' => __( 'Placeholder text for this textarea', 'wp-plugin-advanced-leaflet' ),
 				),
 				array(
 					'id'          => 'single_checkbox',
-					'label'       => __( 'An Option', 'wp-plugin-template' ),
-					'description' => __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'wp-plugin-template' ),
+					'label'       => __( 'An Option', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'checkbox',
 					'default'     => '',
 				),
 				array(
 					'id'          => 'select_box',
-					'label'       => __( 'A Select Box', 'wp-plugin-template' ),
-					'description' => __( 'A standard select box.', 'wp-plugin-template' ),
+					'label'       => __( 'A Select Box', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'A standard select box.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'select',
 					'options'     => array(
 						'drupal'    => 'Drupal',
@@ -244,8 +244,8 @@ class WP_Plugin_Template_Settings {
 				),
 				array(
 					'id'          => 'radio_buttons',
-					'label'       => __( 'Some Options', 'wp-plugin-template' ),
-					'description' => __( 'A standard set of radio buttons.', 'wp-plugin-template' ),
+					'label'       => __( 'Some Options', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'A standard set of radio buttons.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'radio',
 					'options'     => array(
 						'superman' => 'Superman',
@@ -256,8 +256,8 @@ class WP_Plugin_Template_Settings {
 				),
 				array(
 					'id'          => 'multiple_checkboxes',
-					'label'       => __( 'Some Items', 'wp-plugin-template' ),
-					'description' => __( 'You can select multiple items and they will be stored as an array.', 'wp-plugin-template' ),
+					'label'       => __( 'Some Items', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'You can select multiple items and they will be stored as an array.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'checkbox_multi',
 					'options'     => array(
 						'square'    => 'Square',
@@ -271,36 +271,36 @@ class WP_Plugin_Template_Settings {
 		);
 
 		$settings['extra'] = array(
-			'title'       => __( 'Extra', 'wp-plugin-template' ),
-			'description' => __( 'These are some extra input fields that maybe aren\'t as common as the others.', 'wp-plugin-template' ),
+			'title'       => __( 'Extra', 'wp-plugin-advanced-leaflet' ),
+			'description' => __( 'These are some extra input fields that maybe aren\'t as common as the others.', 'wp-plugin-advanced-leaflet' ),
 			'fields'      => array(
 				array(
 					'id'          => 'number_field',
-					'label'       => __( 'A Number', 'wp-plugin-template' ),
-					'description' => __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'wp-plugin-template' ),
+					'label'       => __( 'A Number', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'number',
 					'default'     => '',
-					'placeholder' => __( '42', 'wp-plugin-template' ),
+					'placeholder' => __( '42', 'wp-plugin-advanced-leaflet' ),
 				),
 				array(
 					'id'          => 'colour_picker',
-					'label'       => __( 'Pick a colour', 'wp-plugin-template' ),
-					'description' => __( 'This uses WordPress\' built-in colour picker - the option is stored as the colour\'s hex code.', 'wp-plugin-template' ),
+					'label'       => __( 'Pick a colour', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This uses WordPress\' built-in colour picker - the option is stored as the colour\'s hex code.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'color',
 					'default'     => '#21759B',
 				),
 				array(
 					'id'          => 'an_image',
-					'label'       => __( 'An Image', 'wp-plugin-template' ),
-					'description' => __( 'This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons.', 'wp-plugin-template' ),
+					'label'       => __( 'An Image', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'image',
 					'default'     => '',
 					'placeholder' => '',
 				),
 				array(
 					'id'          => 'multi_select_box',
-					'label'       => __( 'A Multi-Select Box', 'wp-plugin-template' ),
-					'description' => __( 'A standard multi-select box - the saved data is stored as an array.', 'wp-plugin-template' ),
+					'label'       => __( 'A Multi-Select Box', 'wp-plugin-advanced-leaflet' ),
+					'description' => __( 'A standard multi-select box - the saved data is stored as an array.', 'wp-plugin-advanced-leaflet' ),
 					'type'        => 'select_multi',
 					'options'     => array(
 						'linux'   => 'Linux',
@@ -398,7 +398,7 @@ class WP_Plugin_Template_Settings {
 
 		// Build page HTML.
 		$html      = '<div class="wrap" id="' . $this->parent->_token . '_settings">' . "\n";
-			$html .= '<h2>' . __( 'WP Plugin Template Settings', 'wp-plugin-template' ) . '</h2>' . "\n";
+			$html .= '<h2>' . __( 'WP Plugin Advanced Leaflet Settings', 'wp-plugin-advanced-leaflet' ) . '</h2>' . "\n";
 
 			$tab = '';
 		//phpcs:disable
@@ -451,7 +451,7 @@ class WP_Plugin_Template_Settings {
 
 				$html     .= '<p class="submit">' . "\n";
 					$html .= '<input type="hidden" name="tab" value="' . esc_attr( $tab ) . '" />' . "\n";
-					$html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr( __( 'Save Settings', 'wp-plugin-template' ) ) . '" />' . "\n";
+					$html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr( __( 'Save Settings', 'wp-plugin-advanced-leaflet' ) ) . '" />' . "\n";
 				$html     .= '</p>' . "\n";
 			$html         .= '</form>' . "\n";
 		$html             .= '</div>' . "\n";
@@ -460,15 +460,15 @@ class WP_Plugin_Template_Settings {
 	}
 
 	/**
-	 * Main WP_Plugin_Template_Settings Instance
+	 * Main WP_Plugin_Advanced_Leaflet_Settings Instance
 	 *
-	 * Ensures only one instance of WP_Plugin_Template_Settings is loaded or can be loaded.
+	 * Ensures only one instance of WP_Plugin_Advanced_Leaflet_Settings is loaded or can be loaded.
 	 *
 	 * @since 0.1.0
 	 * @static
-	 * @see WP_Plugin_Template()
+	 * @see WP_Plugin_Advanced_Leaflet()
 	 * @param object $parent Object instance.
-	 * @return object WP_Plugin_Template_Settings instance
+	 * @return object WP_Plugin_Advanced_Leaflet_Settings instance
 	 */
 	public static function instance( $parent ) {
 		if ( null === self::$_instance ) {
@@ -483,7 +483,7 @@ class WP_Plugin_Template_Settings {
 	 * @since 0.1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Template_API is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Advanced_Leaflet_API is forbidden.', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->parent->_version ) );
 	} // End __clone()
 
 	/**
@@ -492,7 +492,7 @@ class WP_Plugin_Template_Settings {
 	 * @since 0.1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Template_API is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Advanced_Leaflet_API is forbidden.', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->parent->_version ) );
 	} // End __wakeup()
 
 }

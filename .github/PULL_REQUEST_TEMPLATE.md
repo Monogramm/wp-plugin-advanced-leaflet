@@ -12,7 +12,7 @@ Some key notes before you open a PR:
 
 Also, if you're new here
 
-- Contribution Guide => https://github.com/Monogramm/wp-plugin-template/blob/master/CONTRIBUTING.md
+- Contribution Guide => https://github.com/Monogramm/wp-plugin-advanced-leaflet/blob/master/CONTRIBUTING.md
 
 -->
 

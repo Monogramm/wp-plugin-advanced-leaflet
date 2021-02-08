@@ -1,5 +1,5 @@
 /**
- * WP Plugin Template frontend js.
+ * WP Plugin Advanced Leaflet frontend js.
  *
  * @package
  */

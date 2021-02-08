@@ -2,7 +2,7 @@
 /**
  * Post type Admin API file.
  *
- * @package WP Plugin Template/Includes
+ * @package WP Plugin Advanced Leaflet/Includes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Admin API class.
  */
-class WP_Plugin_Template_Admin_API {
+class WP_Plugin_Advanced_Leaflet_Admin_API {
 
 	/**
 	 * Constructor function
@@ -165,15 +165,15 @@ class WP_Plugin_Template_Admin_API {
 					$image_thumb = wp_get_attachment_thumb_url( $data );
 				}
 				$html .= '<img id="' . $option_name . '_preview" class="image_preview" src="' . $image_thumb . '" /><br/>' . "\n";
-				$html .= '<input id="' . $option_name . '_button" type="button" data-uploader_title="' . __( 'Upload an image', 'wp-plugin-template' ) . '" data-uploader_button_text="' . __( 'Use image', 'wp-plugin-template' ) . '" class="image_upload_button button" value="' . __( 'Upload new image', 'wp-plugin-template' ) . '" />' . "\n";
-				$html .= '<input id="' . $option_name . '_delete" type="button" class="image_delete_button button" value="' . __( 'Remove image', 'wp-plugin-template' ) . '" />' . "\n";
+				$html .= '<input id="' . $option_name . '_button" type="button" data-uploader_title="' . __( 'Upload an image', 'wp-plugin-advanced-leaflet' ) . '" data-uploader_button_text="' . __( 'Use image', 'wp-plugin-advanced-leaflet' ) . '" class="image_upload_button button" value="' . __( 'Upload new image', 'wp-plugin-advanced-leaflet' ) . '" />' . "\n";
+				$html .= '<input id="' . $option_name . '_delete" type="button" class="image_delete_button button" value="' . __( 'Remove image', 'wp-plugin-advanced-leaflet' ) . '" />' . "\n";
 				$html .= '<input id="' . $option_name . '" class="image_data_field" type="hidden" name="' . $option_name . '" value="' . $data . '"/><br/>' . "\n";
 				break;
 
 			case 'color':
 				//phpcs:disable
 				?><div class="color-picker" style="position:relative;">
-					<input type="text" name="<?php esc_attr_e( $option_name, 'wp-plugin-template' ); ?>" class="color" value="<?php esc_attr_e( $data, 'wp-plugin-template' ); ?>" />
+					<input type="text" name="<?php esc_attr_e( $option_name, 'wp-plugin-advanced-leaflet' ); ?>" class="color" value="<?php esc_attr_e( $data, 'wp-plugin-advanced-leaflet' ); ?>" />
 					<div style="position:absolute;background:#FFF;z-index:99;border-radius:100%;" class="colorpicker"></div>
 				</div>
 				<?php

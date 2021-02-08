@@ -37,7 +37,7 @@ script:
   - docker-compose ps
   - docker-compose ps sut | grep 'Exit 0'
   - docker-compose exec -T --user www-data wordpress wp core install --url="http://localhost" --title="WordPress-CI" --admin_user=admin --admin_password=password --admin_email=admin@yopmail.com
-  - docker-compose exec -T --user www-data wordpress wp plugin activate wp-plugin-template
-  - docker-compose exec -T --user www-data wordpress wp plugin deactivate wp-plugin-template
-  - docker-compose exec -T --user www-data wordpress wp plugin uninstall --skip-delete wp-plugin-template
+  - docker-compose exec -T --user www-data wordpress wp plugin activate wp-plugin-advanced-leaflet
+  - docker-compose exec -T --user www-data wordpress wp plugin deactivate wp-plugin-advanced-leaflet
+  - docker-compose exec -T --user www-data wordpress wp plugin uninstall --skip-delete wp-plugin-advanced-leaflet
   - docker-compose down
