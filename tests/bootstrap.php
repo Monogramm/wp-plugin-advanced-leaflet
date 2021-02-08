@@ -2,7 +2,7 @@
 /**
  * Tests bootstrap.
  *
- * @package WP Plugin Template/Tests
+ * @package WP Plugin Advanced Leaflet/Tests
  */
 
 // phpcs:ignorefile

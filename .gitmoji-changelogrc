@@ -1,7 +1,7 @@
 {
   "project": {
-    "name": "wp-plugin-template",
-    "description": "WP Plugin Template with Unit Tests and docker env",
+    "name": "wp-plugin-advanced-leaflet",
+    "description": "WordPress Plugin for advanced geolocation data using Leaflet",
     "version": "0.1.0"
   }
 }

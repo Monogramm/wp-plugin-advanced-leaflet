@@ -105,7 +105,7 @@ case "${1}" in
     docker-compose logs wordpress
     docker-compose ps sut | grep -q 'Exit 0'
     docker-compose exec -T --user www-data wordpress wp core install --url="http://localhost" --title="WordPress-CI" --admin_user=admin --admin_password=password --admin_email=admin@yopmail.com
-    docker-compose exec -T --user www-data wordpress wp plugin activate wp-plugin-template
+    docker-compose exec -T --user www-data wordpress wp plugin activate wp-plugin-advanced-leaflet
     docker-compose down -v
     set +e;;
     logs) docker-compose logs -f "${@:2}";;

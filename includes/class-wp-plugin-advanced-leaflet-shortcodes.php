@@ -2,7 +2,7 @@
 /**
  * ShortCodes class file.
  *
- * @package WP Plugin Template/ShortCodes
+ * @package WP Plugin Advanced Leaflet/ShortCodes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -118,7 +118,7 @@ class WP_Plugin_Advanced_Leaflet_ShortCodes {
 		);
 
 		// Start section.
-		$output = __( 'Powered by WP Plugin Template', 'wp-plugin-template' );
+		$output = __( 'Powered by WP Plugin Advanced Leaflet', 'wp-plugin-advanced-leaflet' );
 
 		// enclosing tags.
 		if ( ! is_null( $content ) ) {
@@ -167,7 +167,7 @@ class WP_Plugin_Advanced_Leaflet_ShortCodes {
 	 * @since 0.1.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Cloning of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->parent->_version ) );
 	} // End __clone()
 
 	/**
@@ -176,7 +176,7 @@ class WP_Plugin_Advanced_Leaflet_ShortCodes {
 	 * @since 0.1.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-template' ) ), esc_attr( $this->parent->_version ) );
+		_doing_it_wrong( __FUNCTION__, esc_html( __( 'Unserializing instances of WP_Plugin_Advanced_Leaflet_ShortCodes is forbidden.', 'wp-plugin-advanced-leaflet' ) ), esc_attr( $this->parent->_version ) );
 	} // End __wakeup()
 
 }
