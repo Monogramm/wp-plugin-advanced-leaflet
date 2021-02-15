@@ -187,85 +187,309 @@ class WP_Plugin_Advanced_Leaflet_Settings {
 	 * @return array Fields to be displayed on settings page
 	 */
 	private function settings_fields() {
+
+		include_once 'class-wp-plugin-advanced-leaflet-settings-storage.php';
+		$settings_storage = new WP_Plugin_Advanced_Leaflet_Settings_Storage();
+
 		$settings['standard'] = array(
 			'title'       => __( 'Standard', 'wp-plugin-advanced-leaflet' ),
 			'description' => __( 'These are fairly standard form input fields.', 'wp-plugin-advanced-leaflet' ),
 			'fields'      => array(
 				array(
-					'id'          => 'text_field',
-					'label'       => __( 'Some Text', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'This is a standard text field.', 'wp-plugin-advanced-leaflet' ),
+					'id'          => 'default_lat',
+					'label'       => __('Default Latitude', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map lat="44.67"]</code>',
+						__('Default latitude for maps.', 'leaflet-map'),
+					),
+					'type'        => 'number',
+					'default'     => $settings_storage->get('default_lat', true),
+					'placeholder' => '',
+				),
+				array(
+					'id'          => 'default_lng',
+					'label'       => __('Default Longitude', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map lng="-63.61"]</code>',
+						__('Default longitude for maps.', 'leaflet-map'),
+					),
+					'type'        => 'number',
+					'default'     => $settings_storage->get('default_lng', true),
+					'placeholder' => '',
+				),
+				array(
+					'id'          => 'default_zoom',
+					'label'       => __('Default Zoom', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map zoom="5"]</code>',
+						__('Default zoom for maps.', 'leaflet-map'),
+					),
+					'type'        => 'number',
+					'default'     => $settings_storage->get('default_zoom', true),
+					'placeholder' => '',
+				),
+				array(
+					'id'          => 'default_height',
+					'label'       => __('Default Height', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map height="250"]</code>',
+						__('Default height for maps. Values can include "px" but it is not necessary. Can also be "%". ', 'leaflet-map'),
+					),
 					'type'        => 'text',
-					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
+					'default'     => $settings_storage->get('default_height', true),
+					'placeholder' => '',
 				),
 				array(
-					'id'          => 'password_field',
-					'label'       => __( 'A Password', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'This is a standard password field.', 'wp-plugin-advanced-leaflet' ),
-					'type'        => 'password',
-					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
+					'id'          => 'default_width',
+					'label'       => __('Default Width', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map width="100%%"]</code>',
+						__('Default width for maps. Values can include "px" but it is not necessary.  Can also be "%".', 'leaflet-map')
+					),
+					'type'        => 'text',
+					'default'     => $settings_storage->get('default_width', true),
 				),
 				array(
-					'id'          => 'secret_text_field',
-					'label'       => __( 'Some Secret Text', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'wp-plugin-advanced-leaflet' ),
-					'type'        => 'text_secret',
-					'default'     => '',
-					'placeholder' => __( 'Placeholder text', 'wp-plugin-advanced-leaflet' ),
-				),
-				array(
-					'id'          => 'text_block',
-					'label'       => __( 'A Text Block', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'This is a standard text area.', 'wp-plugin-advanced-leaflet' ),
-					'type'        => 'textarea',
-					'default'     => '',
-					'placeholder' => __( 'Placeholder text for this textarea', 'wp-plugin-advanced-leaflet' ),
-				),
-				array(
-					'id'          => 'single_checkbox',
-					'label'       => __( 'An Option', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'wp-plugin-advanced-leaflet' ),
+					'id'          => 'fit_markers',
+					'label'       => __('Fit Bounds', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map fitbounds]</code>',
+						__('If enabled, all markers on each map will alter the view of the map; i.e. the map will fit to the bounds of all of the markers on the map.', 'leaflet-map'),
+					),
 					'type'        => 'checkbox',
-					'default'     => '',
+					'default'     => $settings_storage->get('fit_markers', true),
 				),
 				array(
-					'id'          => 'select_box',
-					'label'       => __( 'A Select Box', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'A standard select box.', 'wp-plugin-advanced-leaflet' ),
+					'id'          => 'show_zoom_controls',
+					'label'       => __( 'Some Options', 'wp-plugin-advanced-leaflet' ),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map !zoomcontrol]</code>',
+						__('The zoom buttons can be large and annoying.', 'leaflet-map'),
+					),
+					'type'        => 'checkbox',
+					'default'     => $settings_storage->get('show_zoom_controls', true),
+				),
+				array(
+					'id'          => 'scroll_wheel_zoom',
+					'label'       => __('Scroll Wheel Zoom', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map !scrollwheel]</code>',
+						__('Disable zoom with mouse scroll wheel.  Sometimes someone wants to scroll down the page, and not zoom the map.', 'leaflet-map')
+					),
+					'type'        => 'checkbox',
+					'default'     => $settings_storage->get('scroll_wheel_zoom', true),
+				),
+				array(
+					'id'          => 'double_click_zoom',
+					'label'       => __('Double Click Zoom', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map !doubleClickZoom]</code>',
+						__('If enabled, your maps will zoom with a double click.  By default it is disabled: If we\'re going to remove zoom controls and have scroll wheel zoom off by default, we might as well stick to our guns and not zoom the map.', 'leaflet-map')
+					),
+					'type'        => 'checkbox',
+					'default'     => $settings_storage->get('double_click_zoom', true),
+				),
+				array(
+					'id'          => 'default_min_zoom',
+					'label'       => __('Default Min Zoom', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map min_zoom="1"]</code>',
+						__('Restrict the viewer from zooming in past the minimum zoom.  Can set per map in shortcode or adjust for all maps here.', 'leaflet-map')
+					),
+					'type'        => 'number',
+					'default'     => $settings_storage->get('default_min_zoom', true),
+				),
+				array(
+					'id'          => 'default_max_zoom',
+					'label'       => __('Default Max Zoom', 'leaflet-map'),
+					'description' => sprintf(
+						'%1$s <br /> <code>%2$s</code>',
+						__('Restrict the viewer from zooming out past the maximum zoom.  Can set per map in shortcode or adjust for all maps here', 'leaflet-map'),
+						'[leaflet-map max_zoom="10"]'
+					),
+					'type'        => 'number',
+					'default'     => $settings_storage->get('default_max_zoom', true),
+				),
+				array(
+					'id'          => 'default_tiling_service',
+					'label'       => __('Default Tiling Service', 'leaflet-map'),
+					'default'     => $settings_storage->get('default_tiling_service', true),
 					'type'        => 'select',
 					'options'     => array(
-						'drupal'    => 'Drupal',
-						'joomla'    => 'Joomla',
-						'wordpress' => 'WordPress',
+						'other' => __('I will provide my own map tile URL', 'leaflet-map'),
+						'mapquest' => __('MapQuest (I have an API key)', 'leaflet-map'),
 					),
-					'default'     => 'wordpress',
+					'description' => __('Choose a tiling service or provide your own.', 'leaflet-map')
 				),
 				array(
-					'id'          => 'radio_buttons',
-					'label'       => __( 'Some Options', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'A standard set of radio buttons.', 'wp-plugin-advanced-leaflet' ),
-					'type'        => 'radio',
-					'options'     => array(
-						'superman' => 'Superman',
-						'batman'   => 'Batman',
-						'ironman'  => 'Iron Man',
-					),
-					'default'     => 'batman',
+					'id'          => 'mapquest_appkey',
+					'label'       => __('MapQuest API Key (optional)', 'leaflet-map'),
+					'default'     => __('Supply an API key if you choose MapQuest', 'leaflet-map'),
+					'type'        => 'text',
+					'noreset'     => true,
+					'description' => sprintf(
+						'%1$s <a href="https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register" target="_blank"> %2$s </a>, %3$s <a href="https://developer.mapquest.com/user/me/apps" target="_blank"> %4$s </a> %5$s',
+						__('If you choose MapQuest, you must provide an API key.', 'leaflet-map'),
+						__('Sign up', 'leaflet-map'),
+						__('then', 'leaflet-map'),
+						__('Create a new app', 'leaflet-map'),
+						__('then supply the "Consumer Key" here.', 'leaflet-map')
+					)
 				),
 				array(
-					'id'          => 'multiple_checkboxes',
-					'label'       => __( 'Some Items', 'wp-plugin-advanced-leaflet' ),
-					'description' => __( 'You can select multiple items and they will be stored as an array.', 'wp-plugin-advanced-leaflet' ),
-					'type'        => 'checkbox_multi',
-					'options'     => array(
-						'square'    => 'Square',
-						'circle'    => 'Circle',
-						'rectangle' => 'Rectangle',
-						'triangle'  => 'Triangle',
+					'id'          => 'map_tile_url',
+					'label'       => __('Map Tile URL', 'leaflet-map'),
+					'default'     => $settings_storage->get('map_tile_url', true),
+					'type'        => 'text',
+					'description' => sprintf(
+						'%1$s: <a href="http://wiki.openstreetmap.org/wiki/Tile_servers" target="_blank"> %2$s </a>. %3$s: <a href="http://devblog.mapquest.com/2016/06/15/modernization-of-mapquest-results-in-changes-to-open-tile-access/" target="_blank"> %4$s </a>. <br/> <code>[leaflet-map tileurl=http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg subdomains=abcd]</code>',
+						__('See more tile servers', 'leaflet-map'),
+						__('here', 'leaflet-map'),
+						__('Please note: free tiles from MapQuest have been discontinued without use of an API key', 'leaflet-map'),
+						__('blog post', 'leaflet-map'),
+					)
+				),
+				array(
+					'id'          => 'map_tile_url_subdomains',
+					'label'       => __('Map Tile URL Subdomains', 'leaflet-map'),
+					'default'     => $settings_storage->get('map_tile_url_subdomains', true),
+					'type'        => 'text',
+					'description' => sprintf(
+						'%1$s <br/> <code>[leaflet-map subdomains="1234"]</code>',
+						__('Some maps get tiles from multiple servers with subdomains such as a,b,c,d or 1,2,3,4', 'leaflet-map'),
+					)
+				),
+				array(
+					'id'          => 'detect_retina',
+					'label'       => __('Detect Retina', 'leaflet-map'),
+					'default'     => $settings_storage->get('detect_retina', true),
+					'type'        => 'checkbox',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map detect-retina]</code>',
+						__('Fetch tiles at different zoom levels to appear smoother on retina displays.', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'tilesize',
+					'label'       => __('Tile Size', 'leaflet-map'),
+					'default'     => $settings_storage->get('tilesize', true),
+					'type'        => 'text',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map tilesize=512]</code>',
+						__('Width and height of tiles (in pixels) in the grid. Default is 256', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'mapid',
+					'label'       => __('Tile Id', 'leaflet-map'),
+					'default'     => $settings_storage->get('mapid', true),
+					'type'        => 'text',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map mapid="mapbox/streets-v11"]</code>',
+						__('An id that is passed to L.tileLayer; useful for Mapbox', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'accesstoken',
+					'label'       => __('Access Token', 'leaflet-map'),
+					'default'     => $settings_storage->get('accesstoken', true),
+					'type'        => 'text',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map accesstoken="your.mapbox.access.token"]</code>',
+						__('An access token that is passed to L.tileLayer; useful for Mapbox tiles', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'zoomoffset',
+					'label'       => __('Zoom Offset', 'leaflet-map'),
+					'default'     => $settings_storage->get('zoomoffset', true),
+					'type'        => 'number',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map zoomoffset="-1"]</code>',
+						__('The zoom number used in tile URLs will be offset with this value', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'tile_no_wrap',
+					'label'       => __('No Wrap (tiles)', 'leaflet-map'),
+					'default'     => $settings_storage->get('tile_no_wrap', true),
+					'type'        => 'checkbox',
+					'description' => sprintf(
+						'%1$s <br /> <code>[leaflet-map nowrap]</code>',
+						__('Boolean for whether the layer is wrapped around the antimeridian', 'leaflet-map')
+					)
+				),
+				array(
+					'id'          => 'js_url',
+					'label'       => __('JavaScript URL', 'leaflet-map'),
+					'default'     => $settings_storage->get('js_url', true),
+					'type'        => 'text',
+					'description' => __('If you host your own Leaflet files, then paste the URL here.', 'leaflet-map')
+				),
+				array(
+					'id'          => 'css_url',
+					'label'       => __('CSS URL', 'leaflet-map'),
+					'default'     => $settings_storage->get('css_url', true),
+					'type'        => 'text',
+					'description' => __('Same as above.', 'leaflet-map')
+				),
+				array(
+					'id'          => 'default_attribution',
+					'label'       => __('Default Attribution', 'leaflet-map'),
+					'default'     => $settings_storage->get('default_attribution', true),
+					'type'        => 'textarea',
+					'description' => __('Attribution to a custom tile url.  Use semi-colons (;) to separate multiple.', 'leaflet-map')
+				),
+				array(
+					'id'          => 'show_scale',
+					'label'       => __('Show Scale', 'leaflet-map'),
+					'default'     => $settings_storage->get('show_scale', true),
+					'type'        => 'checkbox',
+					'description' => __(
+						'Add a scale to each map. Can also be added via shortcode <br /> <code>[leaflet-scale]</code>',
+						'leaflet-map'
+					)
+				),
+				array(
+					'id'          => 'geocoder',
+					'label'       => __('Geocoder', 'leaflet-map'),
+					'default'     => $settings_storage->get('geocoder', true),
+					'type'        => 'select',
+					'options' => array(
+						'osm' => __('OpenStreetMap Nominatim', 'leaflet-map'),
+						'google' => __('Google Maps', 'leaflet-map'),
+						'dawa' => __('Denmark Addresses', 'leaflet-map')
 					),
-					'default'     => array( 'circle', 'triangle' ),
+					'description' => __('Select the Geocoding provider to use to retrieve addresses defined in shortcode.', 'leaflet-map')
+				),
+				array(
+					'id'          => 'google_appkey',
+					'label'       => __('Google API Key (optional)', 'leaflet-map'),
+					'default'     => __('Supply a Google API Key', 'leaflet-map'),
+					'type'        => 'text',
+					'noreset' => true,
+					'description' => sprintf(
+						'%1$s: <a href="https://cloud.google.com/maps-platform/?apis=places" target="_blank">%2$s</a>.  %3$s %4$s',
+						__('The Google Geocoder requires an API key with the Places product enabled', 'leaflet-map'),
+						__('here', 'leaflet-map'),
+						__('You must create a project and set up a billing account, then you will be given an API key.', 'leaflet-map'),
+						__('You are unlikely to ever be charged for geocoding.', 'leaflet-map')
+					),
+				),
+				array(
+					'id'          => 'togeojson_url',
+					'label'       => __('KML/GPX JavaScript Converter', 'leaflet-map'),
+					'default'     => $settings_storage->get('togeojson_url', true),
+					'type'        => 'text',
+					'noreset' => true,
+					'description' =>  __('ToGeoJSON converts KML and GPX files to GeoJSON; if you plan to use [leaflet-kml] or [leaflet-gpx] then this library is loaded.  You can change the default if you need.', 'leaflet-map')
+				),
+				array(
+					'id'          => 'shortcode_in_excerpt',
+					'label'       => __('Show maps in excerpts', 'leaflet-map'),
+					'default'     => $settings_storage->get('shortcode_in_excerpt', true),
+					'type'        => 'checkbox',
+					'description' =>  ''
 				),
 			),
 		);
@@ -315,6 +539,14 @@ class WP_Plugin_Advanced_Leaflet_Settings {
 		$settings = apply_filters( $this->parent->_token . '_settings_fields', $settings );
 
 		return $settings;
+	}
+
+	public function getSettingDefault($key) {
+		if ( isset($this->settings_default[$key]) ) {
+			return $key;
+		}
+
+		return null;
 	}
 
 	/**

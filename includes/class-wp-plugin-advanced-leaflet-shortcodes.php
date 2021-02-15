@@ -92,9 +92,60 @@ class WP_Plugin_Advanced_Leaflet_ShortCodes {
 	 * @return array ShortCodes to be registered as tag -> callback.
 	 */
 	private function define_shortcodes() {
-		$shortcodes = array(
-			'powered_by' => 'wppt_powered_by',
-		);
+		$shortcodes =
+			array(
+				array(
+					'type' => 'standard',
+					'shortcodes' => [
+						'powered_by' => 'wppt_powered_by'
+					],
+				),
+				array(
+					'type' => 'leaflet',
+					'shortcodes' => [
+						'leaflet-geojson' => array(
+							'file' => 'class.geojson-shortcode.php',
+							'class' => 'Leaflet_Geojson_Shortcode'
+						),
+						'leaflet-image' => array(
+							'file' => 'class.image-shortcode.php',
+							'class' => 'Leaflet_Image_Shortcode'
+						),
+						'leaflet-kml' => array(
+							'file' => 'class.kml-shortcode.php',
+							'class' => 'Leaflet_Kml_Shortcode'
+						),
+						'leaflet-gpx' => array(
+							'file' => 'class.gpx-shortcode.php',
+							'class' => 'Leaflet_Gpx_Shortcode'
+						),
+						'leaflet-line' => array(
+							'file' => 'class.line-shortcode.php',
+							'class' => 'Leaflet_Line_Shortcode'
+						),
+						'leaflet-polygon' => array(
+							'file' => 'class.polygon-shortcode.php',
+							'class' => 'Leaflet_Polygon_Shortcode'
+						),
+						'leaflet-circle' => array(
+							'file' => 'class.circle-shortcode.php',
+							'class' => 'Leaflet_Circle_Shortcode'
+						),
+						'leaflet-map' => array(
+							'file' => 'class.map-shortcode.php',
+							'class' => 'Leaflet_Map_Shortcode'
+						),
+						'leaflet-marker' => array(
+							'file' => 'class.marker-shortcode.php',
+							'class' => 'Leaflet_Marker_Shortcode'
+						),
+						'leaflet-scale' => array(
+							'file' => 'class.scale-shortcode.php',
+							'class' => 'Leaflet_Scale_Shortcode'
+						),
+					],
+				)
+			);
 
 		return $shortcodes;
 	}
@@ -136,9 +187,22 @@ class WP_Plugin_Advanced_Leaflet_ShortCodes {
 	 */
 	public function register_shortcodes() {
 		if ( is_array( $this->shortcodes ) ) {
-			foreach ( $this->shortcodes as $tag => $callback ) {
-				// Add shortcode.
-				add_shortcode( $this->base . $tag, array( $this, $callback ) );
+			foreach ($this->shortcodes as $element) {
+				if ($element['type'] ==='standard') {
+					foreach ($element['shortcodes'] as $tag => $callback) {
+						// Add shortcode.
+						add_shortcode($this->base . $tag, array($this, $callback));
+					}
+				}
+
+				if ($element['type'] === 'leaflet') {
+					$shortcode_dir = LEAFLET_MAP__PLUGIN_DIR . 'includes/lib/shortcodes/';
+
+					foreach ($element['shortcodes'] as $shortcode => $details) {
+						include_once $shortcode_dir . $details['file'];
+						add_shortcode($shortcode, array($details['class'], 'shortcode'));
+					}
+				}
 			}
 		}
 	}

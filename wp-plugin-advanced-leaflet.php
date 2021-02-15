@@ -21,6 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+define('LEAFLET_MAP__PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LEAFLET_MAP__PLUGIN_VERSION', '2.22.1');
+define('LEAFLET_MAP__PLUGIN_FILE', __FILE__);
+
+
 // Load plugin class files.
 require_once 'includes/class-wp-plugin-advanced-leaflet.php';
 require_once 'includes/class-wp-plugin-advanced-leaflet-settings.php';

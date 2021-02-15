@@ -336,6 +336,221 @@ class WP_Plugin_Advanced_Leaflet {
 	} // End __wakeup ()
 
 	/**
+	 * Sanitize JSON
+	 *
+	 * Takes options for filtering/correcting inputs for use in JavaScript
+	 *
+	 * @param array $arr     user-input array
+	 * @param array $args    array with key-value definitions on how to convert values
+	 * @return array corrected for JavaScript
+	 */
+	public static function json_sanitize($arr, $args)
+	{
+		// remove nulls
+		$arr = self::filter_null($arr);
+
+		// sanitize output
+		$args = array_intersect_key($args, $arr);
+		$arr = filter_var_array($arr, $args);
+
+		$output = json_encode($arr);
+
+		// always return object; not array
+		if ($output === '[]') {
+			$output = '{}';
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Filter for removing nulls from array
+	 *
+	 * @param array $arr
+	 *
+	 * @return array with nulls removed
+	 */
+	public static function filter_null($arr)
+	{
+		if (!function_exists('remove_null')) {
+			function remove_null ($var) {
+				return $var !== null;
+			}
+		}
+
+		return array_filter($arr, 'remove_null');
+	}
+
+	/**
+	 * Parses liquid tags from a string
+	 *
+	 * @param string $str
+	 *
+	 * @return array|null
+	 */
+	public static function liquid ($str) {
+		if (!is_string($str)) {
+			return null;
+		}
+		$templateRegex = "/\{ *(.*?) *\}/";
+		preg_match_all($templateRegex, $str, $matches);
+
+		if (!$matches[1]) {
+			return null;
+		}
+
+		$str = $matches[1][0];
+
+		$tags = explode(' | ', $str);
+
+		$original = array_shift($tags);
+
+		if (!$tags) {
+			return null;
+		}
+
+		$output = array();
+
+		foreach ($tags as $tag) {
+			$tagParts = explode(': ', $tag);
+			$tagName = array_shift($tagParts);
+			$tagValue = implode(': ', $tagParts) || true;
+
+			$output[$tagName] = $tagValue;
+		}
+
+		// preserve the original
+		$output['original'] = $original;
+
+		return $output;
+	}
+
+	/**
+	 * Renders a json-like string, removing quotes for values
+	 *
+	 * allows JavaScript variables to be added directly
+	 *
+	 * @return string
+	 */
+	public static function rawDict ($arr) {
+		$obj = '{';
+
+		foreach ($arr as $key=>$val) {
+			$obj .= "\"$key\": $val,";
+		}
+
+		$obj .= '}';
+
+		return $obj;
+	}
+
+	/**
+	 * Filter for removing empty strings from array
+	 *
+	 * @param array $arr
+	 *
+	 * @return array with empty strings removed
+	 */
+	public static function filter_empty_string($arr)
+	{
+		if (!function_exists('remove_empty_string')) {
+			function remove_empty_string ($var) {
+				return $var !== "";
+			}
+		}
+
+		return array_filter($arr, 'remove_empty_string');
+	}
+
+	/**
+	 * Add Popups to Shapes
+	 *
+	 * used by leaflet-marker, leaflet-line and leaflet-circle
+	 *
+	 * @param array  $atts    user-input array
+	 * @param string $content text to display
+	 * @param string $shape   JavaScript variable for shape
+	 *
+	 * @return null
+	 */
+	public static function add_popup_to_shape($atts, $content, $shape)
+	{
+		if (!empty($atts)) {
+			extract($atts);
+		}
+
+		$message = empty($message) ?
+			(empty($content) ? '' : $content) : $message;
+		$message = str_replace(array("\r\n", "\n", "\r"), '<br>', $message);
+		$message = addslashes($message);
+		$message = htmlspecialchars($message);
+		$visible = empty($visible)
+			? false
+			: filter_var($visible, FILTER_VALIDATE_BOOLEAN);
+
+		if (!empty($message)) {
+			echo "{$shape}.bindPopup(window.WPLeafletMapPlugin.unescape('{$message}'))";
+			if ($visible) {
+				echo ".openPopup()";
+			}
+			echo ";";
+		}
+	}
+
+	/**
+	 * Get Style JSON for map shapes/geojson (svg or canvas)
+	 *
+	 * Takes atts for creating shapes on the map
+	 *
+	 * @param array $atts    user-input array
+	 *
+	 * @return array corrected for JavaScript
+	 */
+	public static function get_style_json($atts)
+	{
+		if ($atts) {
+			extract($atts);
+		}
+
+		// from http://leafletjs.com/reference-1.0.3.html#path
+		$style = array(
+			'stroke' => isset($stroke) ? $stroke : null,
+			'color' => isset($color) ? $color : null,
+			'weight' => isset($weight) ? $weight : null,
+			'opacity' => isset($opacity) ? $opacity : null,
+			'lineCap' => isset($linecap) ? $linecap : null,
+			'lineJoin' => isset($linejoin) ? $linejoin : null,
+			'dashArray' => isset($dasharray) ? $dasharray : null,
+			'dashOffset' => isset($dashoffset) ? $dashoffset : null,
+			'fill' => isset($fill) ? $fill : null,
+			'fillColor' => isset($fillcolor) ? $fillcolor : null,
+			'fillOpacity' => isset($fillopacity) ? $fillopacity : null,
+			'fillRule' => isset($fillrule) ? $fillrule : null,
+			'className' => isset($classname) ? $classname : null,
+			'radius' => isset($radius) ? $radius : null
+		);
+
+		$args = array(
+			'stroke' => FILTER_VALIDATE_BOOLEAN,
+			'color' => FILTER_SANITIZE_STRING,
+			'weight' => FILTER_VALIDATE_FLOAT,
+			'opacity' => FILTER_VALIDATE_FLOAT,
+			'lineCap' => FILTER_SANITIZE_STRING,
+			'lineJoin' => FILTER_SANITIZE_STRING,
+			'dashArray' => FILTER_SANITIZE_STRING,
+			'dashOffset' => FILTER_SANITIZE_STRING,
+			'fill' => FILTER_VALIDATE_BOOLEAN,
+			'fillColor' => FILTER_SANITIZE_STRING,
+			'fillOpacity' => FILTER_VALIDATE_FLOAT,
+			'fillRule' => FILTER_SANITIZE_STRING,
+			'className' => FILTER_SANITIZE_STRING,
+			'radius' => FILTER_VALIDATE_FLOAT
+		);
+
+		return self::json_sanitize($style, $args);
+	}
+
+	/**
 	 * Installation. Runs on activation.
 	 *
 	 * @access  public
