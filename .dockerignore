@@ -1,2 +1,5 @@
 # Ignore CI docker-compose
 docker-compose.yml
+
+# ignore phpdoc cache directories
+.phpdoc/
