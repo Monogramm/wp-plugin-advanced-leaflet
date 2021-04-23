@@ -46,22 +46,31 @@ module.exports = function( grunt ) {
 		},
 
 		// Minify .js files.
-		uglify: {
+		terser: {
 			options: {
-				preserveComments: "some"
+				compress: {
+				  passes: 3,
+				},
+				ecma: 8,
+				output: {
+				  beautify: false,
+				},
+				toplevel: true,
 			},
-			jsfiles: {
-				files: [{
-					expand: true,
-					cwd: "<%= dirs.js %>/",
-					src: [
-						"*.js",
-						"!*.min.js",
-						"!Gruntfile.js",
-					],
-					dest: "<%= dirs.js %>/",
-					ext: ".min.js"
-				}]
+			main: {
+				files: [
+					{
+						expand: true,
+						cwd: "<%= dirs.js %>/",
+						src: [
+							"*.js",
+							"!*.min.js",
+							"!Gruntfile.js",
+						],
+						dest: "<%= dirs.js %>/",
+						ext: ".min.js"
+					},
+				],
 			}
 		},
 
@@ -78,7 +87,7 @@ module.exports = function( grunt ) {
 					"<%= dirs.js %>/*js",
 					"!<%= dirs.js %>/*.min.js"
 				],
-				tasks: ["uglify"]
+				tasks: ["terser"]
 			}
 		},
 
@@ -115,12 +124,12 @@ module.exports = function( grunt ) {
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( "grunt-contrib-less" );
 	grunt.loadNpmTasks( "grunt-contrib-cssmin" );
-	grunt.loadNpmTasks( "grunt-contrib-uglify" );
+	grunt.loadNpmTasks( "grunt-terser" );
 	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-wp-i18n" );
 
 	// Register tasks
-	grunt.registerTask( "default", [ "less", "cssmin", "uglify" ] );
+	grunt.registerTask( "default", [ "less", "cssmin", "terser" ] );
 	grunt.registerTask( "i18n", ["addtextdomain", "makepot"] );
 
 	grunt.util.linefeed = "\n";
