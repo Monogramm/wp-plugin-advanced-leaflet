@@ -28,7 +28,7 @@ A technical documentation is also available at <https://monogramm.github.io/wp-p
 You can generate the PHP documentation using PHPDocumentor:
 
 ```bash
-docker run --rm -v "${PWD}:/data phpdoc/phpdoc:3" run
+docker run --rm -v "${PWD}:/data" phpdoc/phpdoc:3 run
 ```
 
 ## :chart_with_upwards_trend: Changes
