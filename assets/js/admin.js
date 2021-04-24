@@ -5,8 +5,8 @@
  */
 
 /* global jQuery */
-jQuery( document ).ready( function ( e ) {
-	if ( e ) {
+jQuery(document).ready(function (e) {
+	if (e) {
 		// Do something
 	}
-} );
+});
