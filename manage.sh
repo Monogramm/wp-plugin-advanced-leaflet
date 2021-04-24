@@ -72,7 +72,7 @@ case "${1}" in
     local-install)
     composer install
     npm install
-    ./bin/install-wp-tests.sh ${@:2};;
+    ./bin/install-wp-tests.sh "${@:2}";;
 
     local-test)
     ./vendor/bin/phpunit
@@ -89,11 +89,10 @@ case "${1}" in
 
     local-prep-release)
     npm run start
-    prepare_release ${@:2};;
+    prepare_release "${@:2}";;
 
     # DEV env
-    start) docker-compose up -d "${@:2}"
-    chown 'www-data:www-data' -R '/srv/wordpress/html/wp-content';;
+    start) docker-compose up -d "${@:2}";;
     stop) docker-compose down "${@:2}";;
     test) set -e
     docker-compose build
@@ -109,8 +108,7 @@ case "${1}" in
     docker-compose down -v
     set +e;;
     logs) docker-compose logs -f "${@:2}";;
-    reset) docker-compose down
-    rm -rf /srv/wordpress;;
+    reset) docker-compose down -v;;
     sut) docker-compose run -T sut "${@:2}";;
     phpcbf) docker-compose run -T sut ./vendor/bin/phpcbf;;
     wp) docker-compose exec -T --user www-data wordpress wp "${@:2}";;
