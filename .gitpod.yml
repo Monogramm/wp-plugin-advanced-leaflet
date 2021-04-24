@@ -1,0 +1,92 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  # FIXME PHP-FPM does not work here
+  # nginx wordpress
+  #- port: 8080
+  #  onOpen: open-preview
+  # apache wordpress
+  - port: 8001
+    onOpen: open-preview
+  # php-fpm
+  - port: 9000
+    onOpen: ignore
+  # mysql
+  - port: 3306
+    onOpen: ignore
+  # mailhog web interface
+  - port: 8025
+    onOpen: notify
+  # mailhog postfix
+  - port: 1025
+    onOpen: ignore
+
+tasks:
+  # https://github.com/gitpod-io/gitpod/issues/666#issuecomment-534347856
+  - before: >
+      [[ ! -z ${GNUGPG}  ]] &&
+      cd ~ &&
+      rm -rf .gnupg &&
+      echo ${GNUGPG} | base64 -d | tar --no-same-owner -xzvf -
+    name: signed terminal
+    init: >
+      [[ ! -z ${GNUGPG_KEY}  ]] &&
+      git config --global commit.gpgsign true &&
+      git config --global user.signingkey ${GNUGPG_KEY}
+    command: cd $GITPOD_REPO_ROOT
+
+  - init: >
+      export WP_VERSION=5.5 &&
+      ./manage.sh local-install ${WORDPRESS_DB_NAME} ${WORDPRESS_DB_USER} ${WORDPRESS_DB_PASSWORD}
+    name: tests
+    command: >
+      ./manage.sh local-test &&
+      cp .gitpod/wp-config-docker.php .gitpod/www/wp-config.php &&
+      gp sync-done 'tests'
+
+  - before: go get github.com/mailhog/MailHog
+    name: mailhog
+    openMode: split-right
+    command: MailHog
+
+  # FIXME PHP-FPM does not work here
+  #- name: Nginx + PHP-FPM
+  #  command: >
+  #    nginx &&
+  #    /usr/sbin/php-fpm7.4 --fpm-config /etc/php/7.4/fpm/php-fpm.conf &&
+  #    multitail /var/log/nginx/access.log -I /var/log/nginx/error.log -I /var/log/php/php-fpm.log
+
+  - name: Apache + PHP-FPM
+    command: >
+      gp sync-await 'tests' &&
+      apachectl start &&
+      /usr/sbin/php-fpm7.4 --fpm-config /etc/php/7.4/fpm/php-fpm.conf &&
+      tail -f /var/log/apache2/access.log /var/log/apache2/error.log /var/log/php/php-fpm.log
+
+#vscode:
+#  extensions:
+#    - felixfbecker.php-debug@1.13.0:WX8Y3EpQk3zgahy41yJtNQ==
+#
+#    - felixfbecker.php-pack@1.0.2:2V0NCoZNF9GELURKXgdHeQ==
+#
+#    - dbaeumer.vscode-eslint@2.1.8:02aHhbJ0Q4aGdjHXlTdVKg==
+
+#github:
+#  prebuilds:
+#    # enable for the master/default branch (defaults to true)
+#    master: true
+#    # enable for all branches in this repo (defaults to false)
+#    branches: false
+#    # enable for pull requests coming from this repo (defaults to true)
+#    pullRequests: true
+#    # enable for pull requests coming from forks (defaults to false)
+#    pullRequestsFromForks: false
+#    # add a check to pull requests (defaults to true)
+#    addCheck: true
+#    # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
+#    addComment: true
+#    # add a "Review in Gitpod" button to the pull request's description (defaults to false)
+#    addBadge: false
+#    # add a label once the prebuild is ready to pull requests (defaults to false)
+#    addLabel: true
