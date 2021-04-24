@@ -12,17 +12,19 @@
   <version number="latest">
     <api>
       <source dsn=".">
-        <path>includes</path>
+        <path>.</path>
       </source>
       <ignore hidden="true" symlinks="true">
         <path>tests/**/*</path>
+        <path>vendor/**/*</path>
+        <path>node_modules/**/*</path>
+        <path>.phpdoc/**/*</path>
+        <path>/.gitpod/**/*</path>
       </ignore>
-      <extensions>
-        <extension>php</extension>
-      </extensions>
       <markers>
         <marker>TODO</marker>
         <marker>FIXME</marker>
+        <marker>XXX</marker>
       </markers>
     </api>
   </version>

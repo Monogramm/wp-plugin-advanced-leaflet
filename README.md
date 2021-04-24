@@ -1,5 +1,5 @@
 [![License: AGPL v3][uri_license_image]][uri_license]
-[![Docs](https://img.shields.io/badge/Docs-Github%20Pages-blue)](https://wordpress.org/plugins/wp-plugin-advanced-leaflet/)
+[![Docs](https://img.shields.io/badge/Docs-Github%20Pages-blue)](https://monogramm.github.io/wp-plugin-advanced-leaflet)
 [![gitmoji-changelog](https://img.shields.io/badge/Changelog-gitmoji-blue.svg)](https://github.com/frinyvonnick/gitmoji-changelog)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Monogramm/wp-plugin-advanced-leaflet/Docker%20Image%20CI)](https://github.com/Monogramm/wp-plugin-advanced-leaflet/actions)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1db1c7d98f949e2897ac0f41fbbfb30)](https://www.codacy.com/gh/Monogramm/wp-plugin-advanced-leaflet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Monogramm/wp-plugin-advanced-leaflet&amp;utm_campaign=Badge_Grade)
@@ -23,6 +23,13 @@ This template is highly inspired from [hlashbrooke/WordPress Plugin Template](ht
 ## :blue_book: Docs
 
 See WordPress.org plugin at [wordpress.org/plugins/wp-plugin-advanced-leaflet](https://wordpress.org/plugins/wp-plugin-advanced-leaflet/).
+
+A technical documentation is also available at <https://monogramm.github.io/wp-plugin-advanced-leaflet/>.
+You can generate the PHP documentation using PHPDocumentor:
+
+```bash
+docker run --rm -v "${PWD}:/data phpdoc/phpdoc:3" run
+```
 
 ## :chart_with_upwards_trend: Changes
 

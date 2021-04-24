@@ -2,7 +2,7 @@
 /**
  * Post type declaration file.
  *
- * @package WP Plugin Advanced Leaflet/Includes
+ * @package WP Plugin Advanced Leaflet/Includes/Lib
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

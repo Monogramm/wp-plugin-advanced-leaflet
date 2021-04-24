@@ -2,7 +2,7 @@
 /**
  * ShortCodes class file.
  *
- * @package WP Plugin Advanced Leaflet/ShortCodes
+ * @package WP Plugin Advanced Leaflet/Includes
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
