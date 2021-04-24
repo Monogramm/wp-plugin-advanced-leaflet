@@ -44,8 +44,8 @@ function wp_plugin_advanced_leaflet() {
 		$instance->settings = WP_Plugin_Advanced_Leaflet_Settings::instance( $instance );
 	}
 
-	if ( null === $instance->shortcodes ) {
-		$instance->shortcodes = WP_Plugin_Advanced_Leaflet_ShortCodes::instance( $instance );
+	if ( null === $instance->shortcodes_api ) {
+		$instance->shortcodes_api = WP_Plugin_Advanced_Leaflet_ShortCodes::instance( $instance );
 	}
 
 	return $instance;

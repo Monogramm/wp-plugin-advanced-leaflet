@@ -33,7 +33,7 @@ class WP_Plugin_Advanced_Leaflet {
 	/**
 	 * Settings class object.
 	 *
-	 * @var     object
+	 * @var     WP_Plugin_Advanced_Leaflet_Settings|null
 	 * @access  public
 	 * @since   0.1.0
 	 */
@@ -42,11 +42,38 @@ class WP_Plugin_Advanced_Leaflet {
 	/**
 	 * ShortCodes class object.
 	 *
-	 * @var     object
+	 * @var     WP_Plugin_Advanced_Leaflet_ShortCodes|null
 	 * @access  public
 	 * @since   0.1.0
 	 */
-	public $shortcodes = null;
+	public $shortcodes_api = null;
+
+	/**
+	 * Post types list.
+	 *
+	 * @var     WP_Plugin_Advanced_Leaflet_Post_Type[]
+	 * @access  public
+	 * @since   0.1.0
+	 */
+	public $post_types = array();
+
+	/**
+	 * Taxonomies list.
+	 *
+	 * @var     WP_Plugin_Advanced_Leaflet_Taxonomy[]
+	 * @access  public
+	 * @since   0.1.0
+	 */
+	public $taxonomies = array();
+
+	/**
+	 * Shortcodes list.
+	 *
+	 * @var     WP_Plugin_Advanced_Leaflet_Shortcode[]
+	 * @access  public
+	 * @since   0.1.0
+	 */
+	public $shortcodes = array();
 
 	/**
 	 * The version number.
