@@ -1,6 +1,6 @@
 FROM composer:1.10 as builder-composer
 
-FROM alpine:3.12 as builder
+FROM alpine:latest as builder
 
 COPY bin/install-wp-tests.sh /install-wp-tests.sh
 COPY bin/generate-plugin-zip.sh /generate-plugin-zip.sh
